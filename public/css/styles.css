@@ -1,0 +1,40 @@
+.box-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 15px;
+}
+.box-header textarea {
+    width: 99%;
+    height: 100px;
+    outline: 1px solid #b1a3a3;
+}
+
+.box-submit button {
+    height: 35px;
+    width: 200px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background-color: blueviolet;
+    border-radius: 8px;
+}
+
+.style_name {
+    color: #4a5568 !important;
+    font-size: 24px;
+    font-weight: 600;
+}
+.style_time {
+    color: #344054 !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: justify;
+    padding: 3px 0px ;
+}
+
+.box-content{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
