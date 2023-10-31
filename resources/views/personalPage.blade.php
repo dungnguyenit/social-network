@@ -4,6 +4,9 @@
 
 @extends('layouts.app')
 @section('content')
+
+
+
 <section class="about_section layout_padding">
     <div class="container-fluid pl-0">
         <div class="col-md-12">

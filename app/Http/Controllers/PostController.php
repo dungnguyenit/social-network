@@ -14,30 +14,82 @@ use Illuminate\Support\Facades\DB as FacadesDB;
 
 class PostController extends Controller
 {
-    public function store(Request $request, Post $post, PostMedia $postMedia)
+    // public function store(Request $request, Post $post, PostMedia $postMedia)
+    // {
+    //     $userId = Auth::id();
+    //     $params = $request->all();
+
+    //     if ($params['title'] == null) {
+    //         return redirect()->route('home')->with('error_title', 'Nội dung không được bỏ trống.');
+    //     }
+
+    //     // Lưu bài viết
+    //     $post = new Post();
+    //     $post->content = $params['title'];
+    //     $post->user_id = $userId;
+    //     $post->save();
+
+    //     // Xử lý upload tệp và lưu vào thư mục img
+    //     if ($request->hasFile('uploadFiles')) {
+    //         $uploadFiles = $request->file('uploadFiles');
+    //         foreach ($uploadFiles as $file) {
+    //             $mediaType = $file->getMimeType();
+    //             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+    //             $file->move(public_path('img'), $fileName);
+
+    //             // Lưu thông tin về tệp vào cơ sở dữ liệu
+    //             $postMedia = new PostMedia();
+    //             $postMedia->media_url = 'img/' . $fileName;
+    //             $postMedia->media_type = $mediaType;
+    //             $postMedia->post_id = $post->id;
+    //             $postMedia->save();
+    //         }
+    //     }
+
+    //     return redirect(route('home'))->with('msg_create_post', 'Bạn đã tạo mới 1 bài post');
+    // }
+
+
+    // public function getListImages(Request $request)
+    // {
+    //     try {
+    //         $protocol = isset($_SERVER["HTTPS"]) ? 'https' : 'http';
+
+    //         $postId = $request->post('postId');
+    //         $postMedias = DB::table('post_media')->select('*')->where('post_id', $postId)->get();
+    //         foreach ($postMedias as $pm) {
+    //             $pm->media_url = $protocol . "://" . $_SERVER['HTTP_HOST'] . "/" . $pm->media_url;
+    //         }
+    //         header("Content-Type: application/json");
+    //         echo json_encode($postMedias);
+    //     } catch (\Throwable $th) {
+    //         header("Content-Type: application/json");
+    //         http_response_code(500);
+    //         echo json_encode($th->getMessage());
+    //     }
+    // }
+
+    public function store(Request $request)
     {
         $userId = Auth::id();
-        $params = $request->all();
+        $title = $request->input('title');
+        $uploadFiles = $request->file('uploadFiles');
 
-        if ($params['title'] == null) {
+        if (empty($title)) {
             return redirect()->route('home')->with('error_title', 'Nội dung không được bỏ trống.');
         }
 
-        // Lưu bài viết
         $post = new Post();
-        $post->content = $params['title'];
+        $post->content = $title;
         $post->user_id = $userId;
         $post->save();
 
-        // Xử lý upload tệp và lưu vào thư mục img
-        if ($request->hasFile('uploadFiles')) {
-            $uploadFiles = $request->file('uploadFiles');
+        if (!empty($uploadFiles)) {
             foreach ($uploadFiles as $file) {
                 $mediaType = $file->getMimeType();
                 $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
                 $file->move(public_path('img'), $fileName);
 
-                // Lưu thông tin về tệp vào cơ sở dữ liệu
                 $postMedia = new PostMedia();
                 $postMedia->media_url = 'img/' . $fileName;
                 $postMedia->media_type = $mediaType;
@@ -45,9 +97,26 @@ class PostController extends Controller
                 $postMedia->save();
             }
         }
-
-        return redirect(route('home'))->with('msg_create_post', 'Bạn đã tạo mới 1 bài post');
+        return view('home');
     }
+
+    public function getListImages(Request $request)
+    {
+        try {
+            $protocol = isset($_SERVER["HTTPS"]) ? 'https' : 'http';
+
+            $postId = $request->post('postId');
+            $postMedias = DB::table('post_media')->select('*')->where('post_id', $postId)->get();
+            foreach ($postMedias as $pm) {
+                $pm->media_url = $protocol . "://" . $_SERVER['HTTP_HOST'] . "/" . $pm->media_url;
+            }
+
+            return response()->json($postMedias);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 500);
+        }
+    }
+
 
     public function deletePosts($id)
     {
@@ -137,24 +206,7 @@ class PostController extends Controller
         }
     }
 
-    public function getListImages(Request $request)
-    {
-        try {
-            $protocol = isset($_SERVER["HTTPS"]) ? 'https' : 'http';
 
-            $postId = $request->post('postId');
-            $postMedias = DB::table('post_media')->select('*')->where('post_id', $postId)->get();
-            foreach ($postMedias as $pm) {
-                $pm->media_url = $protocol . "://" . $_SERVER['HTTP_HOST'] . "/" . $pm->media_url;
-            }
-            header("Content-Type: application/json");
-            echo json_encode($postMedias);
-        } catch (\Throwable $th) {
-            header("Content-Type: application/json");
-            http_response_code(500);
-            echo json_encode($th->getMessage());
-        }
-    }
 
     private function checkPostIsExist($postId)
     {

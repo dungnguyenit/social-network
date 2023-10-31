@@ -21,29 +21,6 @@ function displayYear() {
 }
 displayYear();
 
-// owl carousel slider js
-// $('.box-img').owlCarousel({
-//     loop: true,
-//     margin: 0,
-//     dots: true,
-//     autoplay: true,
-//     autoplayHoverPause: true,
-//     center: true,
-//     responsive: {
-//         0: {
-//             items: 1
-//         },
-//         480: {
-//             items: 2
-//         },
-//         768: {
-//             items: 3
-//         },
-//         1000: {
-//             items: 5
-//         }
-//     }
-// })
 $(document).ready(function () {
     $(".show-more-image").click(function () {
         let post_id = $(this).data("post-id");

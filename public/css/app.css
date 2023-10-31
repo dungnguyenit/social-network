@@ -207,16 +207,11 @@ pre {
 
 figure {
   margin: 0 0 1rem;
-  margin-bottom: 20px;
 }
 
 img {
   vertical-align: middle;
   border-style: none;
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 18px
 }
 
 svg {
@@ -511,8 +506,6 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
-  height: 150px;
-  object-fit: cover;
 }
 
 .img-thumbnail {
@@ -1194,7 +1187,6 @@ pre code {
   .col-md-3 {
     flex: 0 0 25%;
     max-width: 25%;
-    margin-bottom: 23px;
   }
 
   .col-md-4 {
@@ -8448,7 +8440,7 @@ button.bg-dark:focus {
 
 .mt-1,
 .my-1 {
-  margin-top: -12px !important;
+  margin-top: 0.25rem !important;
 }
 
 .mr-1,
@@ -8659,23 +8651,23 @@ button.bg-dark:focus {
 }
 
 .p-4 {
-  padding: 1.5rem ;
+  padding: 1.5rem !important;
 }
 
 .pt-4,
 .py-4 {
-  padding-top: 1.5rem ;
+  padding-top: 1.5rem !important;
 }
 
 .pr-4,
 .px-4 {
   padding-right: 1.5rem !important;
 }
-/* .py-4, */
-/* .pb-4
- {
-  padding-bottom: 1.5rem ;
-} */
+
+.pb-4,
+.py-4 {
+  padding-bottom: 1.5rem !important;
+}
 
 .pl-4,
 .px-4 {
@@ -10793,9 +10785,6 @@ a.text-light:focus {
 
 .text-dark {
   color: #343a40 !important;
-  display: flex;
-  gap: 3%;
-  margin-bottom: 20px;
 }
 
 a.text-dark:hover,

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -14513,25 +14513,6 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component("article-list", __webpack_require__(/*! ./components/ArticleListComponent.vue */ "./resources/js/components/ArticleListComponent.vue")["default"]);
-var postList = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: "#list"
-});
-
-/***/ }),
-
 /***/ "./resources/js/components/ArticleListComponent.vue":
 /*!**********************************************************!*\
   !*** ./resources/js/components/ArticleListComponent.vue ***!
@@ -14601,14 +14582,37 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 2:
-/*!***********************************!*\
-  !*** multi ./resources/js/app.js ***!
-  \***********************************/
+/***/ "./resources/js/list.js":
+/*!******************************!*\
+  !*** ./resources/js/list.js ***!
+  \******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_ArticleListComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/ArticleListComponent.vue */ "./resources/js/components/ArticleListComponent.vue");
+
+
+var post2 = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+  el: "#list",
+  components: {
+    ArticleList: _components_ArticleListComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ 0:
+/*!************************************!*\
+  !*** multi ./resources/js/list.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\NGUYEN_DINHDUNG\Desktop\social-network\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\NGUYEN_DINHDUNG\Desktop\social-network\resources\js\list.js */"./resources/js/list.js");
 
 
 /***/ })
